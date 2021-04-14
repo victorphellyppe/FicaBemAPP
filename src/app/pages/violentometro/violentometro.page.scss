@@ -1,0 +1,19 @@
+ion-content {
+    height: 100%;
+}
+#questionario {
+    margin: 25px 5px;
+    padding: 5px;
+    font-family: 'Montserrat';
+
+    p {
+        font-size: 30px; font-weight: bolder;
+        margin: 0px;
+    }
+
+    ion-list, ion-item, ion-label {
+        --color: black;
+        background: rgba(0,0,0,0);
+        --background:rgba(255,255,255,0.0);
+    }
+}

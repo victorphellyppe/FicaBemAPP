@@ -1,0 +1,83 @@
+<ion-content>
+    
+        <!-- TELA INICIAL -->
+        <div id="tela1" *ngIf="tela == 1">
+
+          <!-- SUPERIOR -->
+          <div>
+            <h1>Entrar</h1>
+            <p>Olá! Identifique-se entrando com sua conta com e-mail e senha.</p>
+            <p>Caso não tenha uma conta ainda, pode clicar em novo usuário</p>
+          </div>
+          
+          <!-- INFERIOR -->
+          <div>
+            <ion-button (click)="tela = 2" expand="block" color="secondary" shape="round">
+              Entrar
+            </ion-button>
+
+            <ion-button id="novo-cadastro" block color="" expand="full" shape="round" color="light" fill="clear" routerLink="/cadastro" >
+              Novo usuário. Fazer cadastro.
+            </ion-button>
+
+            <ion-button id="recuperar-senha" block color="" expand="full" shape="round" color="light" fill="clear" (click)="tela = 3" >
+              Esqueceu sua senha?<br/> Clique aqui para recuperar
+            </ion-button>
+          </div>
+        </div>
+        <!-- [FIM] TELA INICIAL -->
+
+
+        <!-- TELA DE LOGIN -->
+        <div id="tela2" *ngIf="tela == 2">
+          <form [formGroup]="form" (ngSubmit)="logar()">
+           
+            <ion-button block color="light" fill="clear" (click)="tela = 1" id="btn-voltar">
+              VOLTAR
+            </ion-button>
+
+              <!-- SEU EMAIL -->
+              <div>
+                <h1>Seu e-mail</h1>
+                <ion-item>
+                  <ion-input required formControlName="email" placeholder="fulanodetal@gmail.com"  color="light" inputmode="email" type="text"></ion-input>
+                </ion-item>
+              </div>
+
+              <!-- SUA SENHA -->
+              <div>
+                <h1>Sua senha</h1>
+                <ion-item>
+                  <ion-input required formControlName="senha" placeholder="******" type="password" color="light"></ion-input>
+                </ion-item>
+              </div>
+              <ion-button block color="secondary" expand="full" shape="round" type="submit" [disabled]="form.invalid">
+                Confirmar
+              </ion-button>
+          </form>
+        </div>
+
+        <!-- TELA DE RECUPERAR SENHA -->
+        <div id="tela2" *ngIf="tela == 3">
+          <form [formGroup]="formRecuperar" (ngSubmit)="recuperarSenha()">
+           
+            <ion-button block color="light" fill="clear" (click)="tela = 1" id="btn-voltar">
+              VOLTAR
+            </ion-button>
+
+              <!-- SEU EMAIL -->
+              <div>
+                <h1>Seu e-mail</h1>
+                <ion-item>
+                  <ion-input required formControlName="email" placeholder="fulanodetal@gmail.com"  color="light" inputmode="email" type="text"></ion-input>
+                </ion-item>
+              </div>
+
+              <ion-button block color="secondary" expand="full" shape="round" type="submit" [disabled]="formRecuperar.invalid">
+                Recuperar
+              </ion-button>
+          </form>
+        </div>
+
+        <!-- [FIM] TELA LOGIN -->
+</ion-content>

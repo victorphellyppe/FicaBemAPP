@@ -1,0 +1,19 @@
+ion-content {
+    --background: var(--ion-color-primary);
+    
+    #container {
+        display: flex;
+        padding: 50px;
+
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
+        ion-img { width: 80px; height: 80px; margin-bottom: -25px }
+        #titulo { font-size: 35px; color: white; word-spacing: -6px;}
+        #descricao { color: white; text-align: center; font-size: 10px; font-family: 'Montserrat'; margin-top:40px; line-height: 15pt; word-spacing:3px;}
+        ion-button { align-self: stretch; margin-top: 100px;}
+    }
+ 
+}

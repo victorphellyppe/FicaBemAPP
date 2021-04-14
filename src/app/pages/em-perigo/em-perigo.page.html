@@ -1,0 +1,62 @@
+<ion-content>
+  <div id="theme2" class="height-100">
+    <div id="toolbar">
+      <ion-grid fixed>
+        <ion-row>
+          <!-- ESQUERDA-->
+          <ion-col size="3">
+            <back-button fixo="/dashboard/home"></back-button>
+          </ion-col>
+  
+          <!-- CENTRO -->
+          <ion-col size="6">        
+            <h1>EM PERIGO!</h1>
+          </ion-col>
+  
+          <!-- DIREITA -->
+          <ion-col size="3">
+            <btn-ajuda [personagem]='ajuda' [auto-carregar]="true"></btn-ajuda>
+          </ion-col>
+  
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div id="container">
+  
+      <h1>Solicitar ajuda rápida</h1>
+      <!-- POLICIA -->
+      <ion-button (click)="ligarPolicia()" id="btn-policia" expand="block" shape="round">
+        POLÍCIA
+      </ion-button>
+
+      <!-- RAVVS -->
+      <ion-button (click)="ligarRAVVS()" id="btn-ravvs" expand="block" shape="round">
+        RAVVS
+      </ion-button>
+
+      <!-- SMS - RAVVS -->
+      <ion-button (click)="enviarSMSRAVVS()" id="btn-sms-ravvs" expand="block" shape="round">
+        SMS - RAVVS
+      </ion-button>
+
+      <!-- SMS - CONTATOS -->
+      <ion-button (click)="enviarSMSContatos()" id="btn-sms-contatos" expand="block" shape="round">
+        SMS - CONTATOS
+      </ion-button>
+
+      <!-- ENVIAR PARA TODOS -->
+      <ion-button (click)="enviarSMSTodos()" id="btn-sms-todos" expand="block" shape="round">
+        ENVIAR SMS PARA TODOS
+      </ion-button>
+
+      <div id="gerenciar-contatos">
+        <div id="btn-contato" routerLink="/em-perigo/contatos">
+          <ion-icon name="ios-person-add-outline"></ion-icon>
+        </div>
+        <p>Contatos</p>
+      </div>
+
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,522 @@
+<ion-content #ionContent>
+  <div id="theme3">
+
+    <div id="toolbar">
+      <ion-grid fixed>
+        <ion-row>
+          <!-- ESQUERDA-->
+          <ion-col size="4">
+            <back-button url-padrao="/login"></back-button>
+          </ion-col>
+
+          <!-- CENTRO -->
+          <ion-col size="4">        
+            <ion-text id="titulo-header" color="primary">
+              <h1>Questionário</h1>
+            </ion-text>
+          </ion-col>
+
+            <!-- DIREITA -->
+            <ion-col size="4">
+              <btn-ajuda [personagem]='ajuda' [auto-carregar]="true"></btn-ajuda>
+          </ion-col>
+          
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    
+    <div id="concluido" *ngIf="sucesso">
+      <p>Seus dados foram enviado. Obrigado pela sua ajuda e você conseguiu dar seu primeiro passo! <br/>
+      Em breve a RAVVS entrará em contato para te ajudar</p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="salvar()" *ngIf="!sucesso">
+
+      <h1>Responda o<br/> formulário abaixo </h1>
+      <div id="personagem" *ngIf="msg">
+        <p>{{msg}}</p>
+      </div>
+
+
+      <!-- DROGAS NA FAMILIA -->
+      <ion-item lines="none">
+        <ion-label text-wrap>Denuncia Anônima?</ion-label>
+        <ion-checkbox slot="end" formControlName="anonimo"></ion-checkbox>
+      </ion-item>
+
+      <!-- DENUNCIANTE -->
+      <ion-item>
+        <ion-label>Denunciante </ion-label>
+        <ion-select value="9" okText="Ok" cancelText="Cancelar" formControlName="denuncia">
+          <ion-select-option value="1">Conselheiro Tutelar</ion-select-option>
+          <ion-select-option value="2">Profissional da saúde</ion-select-option>
+          <ion-select-option value="3">Profissional da segurança pública</ion-select-option>
+          <ion-select-option value="4">Profissional da educação</ion-select-option>
+          <ion-select-option value="5">População</ion-select-option>
+          <ion-select-option value="9">Ignorado</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item-group>
+        <ion-item-divider lines="none">
+          <ion-label text-wrap>Dados da Vítima</ion-label>
+        </ion-item-divider>
+      
+        <!-- NOME DA VITIMA -->
+        <ion-item lines="none">
+          <ion-label text-wrap>Nome da Vítima</ion-label>
+          <ion-input type="text" formControlName="nome" placeholder="Digite o nome da vítima"></ion-input>
+          <ion-icon name="book-outline"></ion-icon>
+        </ion-item>
+        <ion-item class="campo-erro" *ngIf="form.get('nome').invalid && form.get('nome').touched" lines="none">
+          <ion-label>
+            Campo obrigatório
+          </ion-label>
+        </ion-item>
+
+        <!-- TELEFONE DA VITIMA -->
+        <ion-item lines="none">
+          <ion-label text-wrap>Telefone da Vítima</ion-label>
+          <ion-input type="text" inputmode="tel" formControlName="telefone" mask="(00) 00000-0000" placeholder="(00) 00000-0000"></ion-input>
+        </ion-item>
+        <ion-item class="campo-erro" *ngIf="form.get('telefone').invalid && form.get('telefone').touched" lines="none">
+          <ion-label> Campo obrigatório </ion-label>
+        </ion-item>
+
+        <!-- ENDEREÇO DA VITIMA -->
+        <ion-item lines="none">
+          <ion-label text-wrap>Endereço da Vítima</ion-label>
+          <ion-input type="text" formControlName="endereco" placeholder="Rua..."></ion-input>
+        </ion-item>
+        <ion-item class="campo-erro" *ngIf="form.get('endereco').invalid && form.get('endereco').touched" lines="none">
+          <ion-label>
+            Campo obrigatório
+          </ion-label>
+        </ion-item>
+
+        <!-- CPF DA VITIMA -->
+        <ion-item lines="none">
+          <ion-label text-wrap>CPF da Vítima</ion-label>
+          <ion-input type="text" inputmode="tel" formControlName="cpf" mask="000.000.000-00" placeholder="000.000.000-00"></ion-input>
+        </ion-item>
+        <ion-item class="campo-erro" *ngIf="form.get('cpf').invalid && form.get('cpf').touched" lines="none">
+          <ion-label>
+            Campo obrigatório
+          </ion-label>
+        </ion-item>
+
+        <!-- DATA DE NASCIMENTO DA VITIMA -->
+        <ion-item lines="none">
+          <ion-label text-wrap>Data de Nascimento da Vítima</ion-label>
+          <ion-datetime displayFormat="DD de MMMM de YYYY"  formControlName="data_nascimento" color="light" monthNames="Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro" cancelText="Cancelar" doneText="Ok" placeholder="Selecione a data"></ion-datetime>          
+        </ion-item>
+        <ion-item class="campo-erro" *ngIf="form.get('data_nascimento').invalid && form.get('data_nascimento').touched" lines="none">
+          <ion-label>
+            Campo obrigatório
+          </ion-label>
+        </ion-item>
+
+        <!-- GENERO DA VITIMA-->
+        <ion-item lines="none">
+          <ion-label text-wrap>Qual Gênero?</ion-label>
+          <ion-select formControlName="genero" placeholder="selecione o genero">
+            <ion-select-option value="feminino">Femino</ion-select-option>
+            <ion-select-option value="masculino">Masculino</ion-select-option>
+            <ion-select-option value="ignorado">Ignorado</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <!-- RAÇA -->
+        <ion-item lines="none">
+          <ion-label text-wrap>Raça da Vítima</ion-label>
+          <ion-select formControlName="raca" placeholder="selecione a raça">
+            <ion-select-option [value]="1">Branca</ion-select-option>
+            <ion-select-option [value]="2">Preta</ion-select-option>
+            <ion-select-option [value]="3">Amarela</ion-select-option>
+            <ion-select-option [value]="4">Parda</ion-select-option>
+            <ion-select-option [value]="5">Indígena</ion-select-option>
+            <ion-select-option [value]="9">Ignorado</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+
+        <!-- DROGAS NA FAMILIA -->
+        <ion-item lines="none">
+          <ion-label text-wrap>há uso de drogas na família?</ion-label>
+          <ion-checkbox slot="end" formControlName="drogas_familia"></ion-checkbox>
+        </ion-item>
+        <ion-item *ngIf="form.get('drogas_familia').value" lines="none">
+          <ion-label position="fixed">Por quem?</ion-label>
+          <ion-input type="text" formControlName="usuario_droga_familia" placeholder="Pai, mãe, irmão..."></ion-input>
+        </ion-item>
+
+        <!-- BENEFICIO -->
+        <ion-item lines="none">
+          <ion-label text-wrap>Recebe algum benefício?</ion-label>
+          <ion-checkbox slot="end" formControlName="tem_beneficio"></ion-checkbox>
+        </ion-item>
+        <ion-item *ngIf="form.get('tem_beneficio').value" lines="none">
+          <ion-label position="fixed">Qual?</ion-label>
+          <ion-input type="text" formControlName="beneficio" placeholder="Bolsa familia..."></ion-input>
+        </ion-item>
+
+        <!-- DENUNCIA FORMALIZADA -->
+        <ion-item lines="none">
+          <ion-label text-wrap>A denuncia foi formalizada?</ion-label>
+          <ion-checkbox slot="end" formControlName="denunciado"></ion-checkbox>
+        </ion-item>
+        <ion-item *ngIf="!form.get('denunciado').value" lines="none">
+          <ion-label text-wrap>Por que?</ion-label>
+          <ion-select multiple="true" formControlName="motivo_nao_denunciar" placeholder="selecione o motivo">
+            <ion-select-option value="1">Medo</ion-select-option>
+            <ion-select-option value="2">Dependência Econômica</ion-select-option>
+            <ion-select-option value="3">Descrença na justiça</ion-select-option>
+            <ion-select-option value="4">Vergonha</ion-select-option>
+            <ion-select-option value="5">Preservar a relação</ion-select-option>
+            <ion-select-option value="6">Outro</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <!-- DROGAS NA FAMILIA -->
+        <ion-item lines="none">
+          <ion-label text-wrap>Já havia sofrido abuso antes?</ion-label>
+          <ion-checkbox slot="end" formControlName="abuso_anterior"></ion-checkbox>
+        </ion-item>
+        <ion-item *ngIf="form.get('abuso_anterior').value" lines="none">
+          <ion-label position="fixed">Por quem?</ion-label>
+          <ion-input type="text" formControlName="abusador_anterior" placeholder="Pai, mãe, irmão..."></ion-input>
+        </ion-item>
+
+        <!-- GESTANTE -->
+        <ion-item lines="none">
+          <ion-label text-wrap>Gestante?</ion-label>
+          <ion-select formControlName="gestante">
+            <ion-select-option value="1">1º Trimestre</ion-select-option>
+            <ion-select-option value="2">2º Trimestre</ion-select-option>
+            <ion-select-option value="3">3º Trimestre</ion-select-option>
+            <ion-select-option value="4">Idade gestacional ignorada</ion-select-option>
+            <ion-select-option value="5">Não</ion-select-option>
+            <ion-select-option value="6">Não se aplica</ion-select-option>
+            <ion-select-option value="9">Ignorado</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <!-- ESCOLARIDADE -->
+        <ion-item lines="none">
+          <ion-label text-wrap>Escolaridade</ion-label>
+          <ion-select formControlName="escolaridade">
+            <ion-select-option value="0">Analfabeto</ion-select-option>
+            <ion-select-option value="1">1ª a 4ª série incompleta do EF</ion-select-option>
+            <ion-select-option value="2">4ª série completa do EF</ion-select-option>
+            <ion-select-option value="3">5ª a 8ª série incompleta do EF</ion-select-option>
+            <ion-select-option value="4">Ensino Fundamental completo</ion-select-option>
+            <ion-select-option value="5">Ensino médio incompleto</ion-select-option>
+            <ion-select-option value="6">Ensino médio completo</ion-select-option>
+            <ion-select-option value="7">Educação superior incompleta</ion-select-option>
+            <ion-select-option value="8">Educação superior completa</ion-select-option>
+            <ion-select-option value="9">Ignorado</ion-select-option>
+            <ion-select-option value="10">Não se aplica</ion-select-option>
+          </ion-select>
+        </ion-item>
+      
+        <!-- ZONA -->
+        <ion-item lines="none">
+          <ion-label text-wrap>Zona residencial</ion-label>
+          <ion-select formControlName="zona">
+            <ion-select-option value="1">Urbana</ion-select-option>
+            <ion-select-option value="2">Rural</ion-select-option>
+            <ion-select-option value="3">Periurbana</ion-select-option>
+            <ion-select-option value="9">Ignorado</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <!-- ESTADO CIVIL -->
+        <ion-item lines="none">
+          <ion-label text-wrap>Estado Civil</ion-label>
+          <ion-select formControlName="estado_civil">
+            <ion-select-option value="1">Solteiro</ion-select-option>
+            <ion-select-option value="2">Casado/União consensual</ion-select-option>
+            <ion-select-option value="3">Viúvo</ion-select-option>
+            <ion-select-option value="4">Separado</ion-select-option>
+            <ion-select-option value="8">Não se aplica</ion-select-option>
+            <ion-select-option value="9">Ignorado</ion-select-option>
+          </ion-select>
+        </ion-item>
+        
+        <!-- ORIENTAÇÃO SEXUAL -->
+        <ion-item lines="none">
+          <ion-label text-wrap>Orientação sexual</ion-label>
+          <ion-select formControlName="orientacao_sexual">
+            <ion-select-option value="1">Heterossexual</ion-select-option>
+            <ion-select-option value="2">Homossexual (gay/lésbica)</ion-select-option>
+            <ion-select-option value="3">Bissexual</ion-select-option>
+            <ion-select-option value="8">Não se aplica</ion-select-option>
+            <ion-select-option value="9">Ignorado</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <!-- IDENTIDADE DE GENERO -->
+        <ion-item lines="none">
+          <ion-label text-wrap>Identidade de gênero</ion-label>
+          <ion-select formControlName="identidade_genero">
+            <ion-select-option value="1">Travesti</ion-select-option>
+            <ion-select-option value="2">Mulher Transexual</ion-select-option>
+            <ion-select-option value="3">Homem Transexual</ion-select-option>
+            <ion-select-option value="8">Não se aplica</ion-select-option>
+            <ion-select-option value="9">Ignorado</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <!-- TRANSTORNO -->
+        <ion-item lines="none">
+          <ion-label text-wrap>Possui algum transtorno/deficiência?</ion-label>
+          <ion-checkbox slot="end" formControlName="tem_transtorno"></ion-checkbox>
+        </ion-item>
+        <ion-item *ngIf="form.get('tem_transtorno').value" lines="none">
+          <ion-label text-wrap>Qual tipo de transtorno?</ion-label>
+          <ion-select multiple="true" formControlName="transtornos" placeholder="selecione o motivo">
+            <ion-select-option value="1">Deficiência Física</ion-select-option>
+            <ion-select-option value="2">Deficiência Intelectual</ion-select-option>
+            <ion-select-option value="3">Deficiência Visual</ion-select-option>
+            <ion-select-option value="4">Deficiência Auditiva</ion-select-option>
+            <ion-select-option value="5">Transtorno Mental</ion-select-option>
+            <ion-select-option value="6">Transtorno de Comportamento</ion-select-option>
+            <ion-select-option value="7">Outro</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-item-group>
+
+      <ion-item-group>
+        <ion-item-divider>
+          <ion-label text-wrap>Dados da ocorrência</ion-label>
+        </ion-item-divider>
+
+        <!-- DIA DA OCORRÊNCIA -->
+        <ion-item lines="none">
+          <ion-label text-wrap>Dia da ocorrência<ion-text color="danger">*</ion-text></ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY" formControlName="dia_ocorrencia" cancelText="Cancelar" doneText="Ok" placeholder="Selecione o dia"></ion-datetime>
+        </ion-item>
+        <ion-item class="campo-erro" *ngIf="form.get('dia_ocorrencia').invalid && form.get('dia_ocorrencia').touched" lines="none">
+          <ion-label>
+            Informe a hora apróximada
+          </ion-label>
+        </ion-item>
+
+        <!-- HORA DA OCORRÊNCIA -->
+        <ion-item lines="none">
+          <ion-label text-wrap>Hora da ocorrência<ion-text color="danger">*</ion-text></ion-label>
+          <ion-datetime displayFormat="HH:mm" formControlName="hora_ocorrencia" cancelText="Cancelar" doneText="Ok" placeholder="Selecione a hora"></ion-datetime>
+        </ion-item>
+        <ion-item class="campo-erro" *ngIf="form.get('hora_ocorrencia').invalid && form.get('hora_ocorrencia').touched" lines="none">
+          <ion-label>
+            Informe a hora apróximada
+          </ion-label>
+        </ion-item>
+
+        <!-- LOCAL -->
+        <ion-item lines="none">
+          <ion-label text-wrap>Local da ocorrência?</ion-label>
+          <ion-select multiple="true" formControlName="local">
+            <ion-select-option value="1">Residência</ion-select-option>
+            <ion-select-option value="2">Habitação Coletiva</ion-select-option>
+            <ion-select-option value="3">Escola</ion-select-option>
+            <ion-select-option value="4">Local de prática esportiva</ion-select-option>
+            <ion-select-option value="5">Bar ou similar</ion-select-option>
+            <ion-select-option value="6">Via pública</ion-select-option>
+            <ion-select-option value="7">Comércio/Serviços</ion-select-option>
+            <ion-select-option value="8">Indústrias/Construção</ion-select-option>
+            <ion-select-option value="9">Outro</ion-select-option>
+            <ion-select-option value="99">Ignorado</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <!-- OCORREU OUTRAS VEZES-->
+        <ion-item lines="none">
+          <ion-label text-wrap>Ocorreu outras vezes</ion-label>
+          <ion-select  formControlName="ocorreu_outras_vezes">
+            <ion-select-option value="1">Sim</ion-select-option>
+            <ion-select-option value="2">Não</ion-select-option>
+            <ion-select-option value="9">Ignorado</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <!-- LESÃO AUTOPROVOCADA-->
+        <ion-item lines="none">
+          <ion-label text-wrap>A lesão foi autoprovocada?</ion-label>
+          <ion-select  formControlName="lesao_autoprovocada">
+            <ion-select-option value="1">Sim</ion-select-option>
+            <ion-select-option value="2">Não</ion-select-option>
+            <ion-select-option value="9">Ignorado</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-item-group>
+
+
+      <ion-item-group>
+        <ion-item-divider>
+          <ion-label text-wrap>Violência</ion-label>
+        </ion-item-divider>
+
+        <!-- MOTIVO -->
+        <ion-item lines="none">
+          <ion-label text-wrap>Essa violência foi motivada por</ion-label>
+          <ion-select formControlName="motivo_violencia">
+            <ion-select-option value="1">Sexismo</ion-select-option>
+            <ion-select-option value="2">Homofobia/Lesbofobia/Bifobia/Transfobia</ion-select-option>
+            <ion-select-option value="3">Racismo</ion-select-option>
+            <ion-select-option value="4">Intolerância Religiosa</ion-select-option>
+            <ion-select-option value="5">Xenofobia</ion-select-option>
+            <ion-select-option value="6">Conflito geracional</ion-select-option>
+            <ion-select-option value="7">Situação de rua</ion-select-option>
+            <ion-select-option value="8">Deficiência</ion-select-option>
+            <ion-select-option value="9">Outro</ion-select-option>
+            <ion-select-option value="88">Não se aplica</ion-select-option>
+            <ion-select-option value="99">Ignorado</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <!-- TIPO DE VIOLENCIA -->
+        <ion-item lines="none">
+          <ion-label text-wrap>Tipo de violência</ion-label>
+          <ion-select multiple="true" formControlName="tipo_violencia" placeholder="Selecione uma opção">
+            <ion-select-option value="1">Física</ion-select-option>
+            <ion-select-option value="2">Psicológica/Moral</ion-select-option>
+            <ion-select-option value="3">Tortura</ion-select-option>
+            <ion-select-option value="4">Sexual</ion-select-option>
+            <ion-select-option value="5">Tráfico de seres humanos</ion-select-option>
+            <ion-select-option value="6">Financeira/Econômica</ion-select-option>
+            <ion-select-option value="7">Negligência/Abandono</ion-select-option>
+            <ion-select-option value="8">Trabalho Infantil</ion-select-option>
+            <ion-select-option value="9">Intervenção Legal</ion-select-option>
+            <ion-select-option value="10">Outros</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <!-- MEIO DE VIOLENCIA -->
+        <ion-item lines="none">
+          <ion-label text-wrap>Meio de agressão</ion-label>
+          <ion-select multiple="true" formControlName="meio_violencia" placeholder="Selecione uma opção">
+            <ion-select-option value="1">Força Corporal/Espancamento</ion-select-option>
+            <ion-select-option value="2">Obj. pérfuro-cortante</ion-select-option>
+            <ion-select-option value="3">Arma de fogo</ion-select-option>
+            <ion-select-option value="4">Enforcamento</ion-select-option>
+            <ion-select-option value="5">Substância/Obj. quente</ion-select-option>
+            <ion-select-option value="6">Ameaça</ion-select-option>
+            <ion-select-option value="7">Obj. contundente</ion-select-option>
+            <ion-select-option value="8">Envenenamento, intoxicação</ion-select-option>
+            <ion-select-option value="9">Outros</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <!-- VIOLENCIA SEXUAL -->
+        <ion-item lines="none">
+          <ion-label text-wrap>Se ocorreu violência sexual, qual o tipo?</ion-label>
+          <ion-select multiple="true" formControlName="violencia_sexual" placeholder="Selecione uma opção">
+            <ion-select-option value="1">Assédio sexual</ion-select-option>
+            <ion-select-option value="2">Estupro</ion-select-option>
+            <ion-select-option value="3">Pornográfia Infantil</ion-select-option>
+            <ion-select-option value="4">Exploração Sexual</ion-select-option>
+            <ion-select-option value="5">Outros</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+      <!-- VIOLENCIA RELACIONADA AO TRABALHO -->
+      <ion-item lines="none">
+        <ion-label text-wrap>Violência relacionada ao trabalho?</ion-label>
+        <ion-select formControlName="violencia_trabalho">
+          <ion-select-option value="1">Sim</ion-select-option>
+          <ion-select-option value="2">Não</ion-select-option>
+          <ion-select-option value="9">Ignorado</ion-select-option>
+        </ion-select>
+      </ion-item>
+      </ion-item-group>
+      
+      <ion-item-group>
+        <ion-item-divider>
+          <ion-label text-wrap>Dados do provável autor da violência</ion-label>
+        </ion-item-divider>
+
+        <!-- NUMERO ENVOLVIDOS -->
+        <ion-item lines="none">
+          <ion-label text-wrap>Número de envolvidos</ion-label>
+          <ion-select formControlName="numero_envolvidos">
+            <ion-select-option value="1">Um</ion-select-option>
+            <ion-select-option value="2">Dois ou mais</ion-select-option>
+            <ion-select-option value="9">Ignorado</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <!-- VINCULO AGRESSOR -->
+        <ion-item lines="none">
+          <ion-label text-wrap>Se ocorreu violência sexual, por quem?</ion-label>
+          <ion-select multiple="true" formControlName="vinculo_agressor" placeholder="Selecione quem era os agressores">
+            <ion-select-option value="1">Pai</ion-select-option>
+            <ion-select-option value="2">Mãe</ion-select-option>
+            <ion-select-option value="3">Padrasto</ion-select-option>
+            <ion-select-option value="4">Madrasta</ion-select-option>
+            <ion-select-option value="5">Cônjulge</ion-select-option>
+            <ion-select-option value="6">Ex-Cônjulge</ion-select-option>
+            <ion-select-option value="7">Namorado(a)</ion-select-option>
+            <ion-select-option value="8">Ex-Namorado(a)</ion-select-option>
+            <ion-select-option value="9">Filho</ion-select-option>
+            <ion-select-option value="10">Irmão</ion-select-option>
+            <ion-select-option value="11">Amigos/Conhecidos</ion-select-option>
+            <ion-select-option value="12">Desconhecido(a)</ion-select-option>
+            <ion-select-option value="13">Cuidador(a)</ion-select-option>
+            <ion-select-option value="14">Patrão/Chefe</ion-select-option>
+            <ion-select-option value="15">Pessoa com relação institucional</ion-select-option>
+            <ion-select-option value="16">Policial/Agente da lei</ion-select-option>
+            <ion-select-option value="17">Própria pessoa</ion-select-option>
+            <ion-select-option value="18">Outros</ion-select-option>
+          </ion-select>
+        </ion-item>
+    
+
+      <!-- SEXO AGRESSOR -->
+      <ion-item lines="none">
+        <ion-label text-wrap>Sexo do provável autor da violência?</ion-label>
+        <ion-select formControlName="sexo_agressor">
+          <ion-select-option value="1">Masculino</ion-select-option>
+          <ion-select-option value="2">Feminino</ion-select-option>
+          <ion-select-option value="3">Ambos os sexos</ion-select-option>
+          <ion-select-option value="9">Ignorado</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- USO DE ALCOOL -->
+      <ion-item lines="none">
+        <ion-label text-wrap>Suspeita de uso de álcool?</ion-label>
+        <ion-select formControlName="uso_alcool">
+          <ion-select-option value="1">Sim</ion-select-option>
+          <ion-select-option value="2">Não</ion-select-option>
+          <ion-select-option value="9">Ignorado</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- IDADE AGRESSOR -->
+      <ion-item lines="none">
+        <ion-label text-wrap>Idade média do agressor?</ion-label>
+        <ion-select formControlName="idade_agressor">
+          <ion-select-option value="1">Criança (0 a 9 anos)</ion-select-option>
+          <ion-select-option value="2">Adolescente (10 a 19 anos)</ion-select-option>
+          <ion-select-option value="3">Jovem (20 a 24 anos)</ion-select-option>
+          <ion-select-option value="4">Pessoa Adulta (25 a 59 anos)</ion-select-option>
+          <ion-select-option value="6">Pessoa Idosa (60 anos ou mais)</ion-select-option>
+          <ion-select-option value="9">Ignorado</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-item-group>
+
+      <!-- OBSERVAÇÃO -->
+      <ion-item lines="none">
+        <ion-label position="fixed">Observação adicionais</ion-label>
+        <ion-textarea formControlName="observacao" placeholder="Digite alguma observação" autoGrow></ion-textarea>
+      </ion-item>
+
+      <ion-button block size="large" expand="full" shape="round" type="submit" [disabled]="form.invalid">
+        Enviar
+      </ion-button>
+    </form>
+  </div>
+</ion-content>

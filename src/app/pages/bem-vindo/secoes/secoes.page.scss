@@ -1,0 +1,18 @@
+ion-content {
+    --background: #ffa21a;
+}
+
+ion-slides {
+    height: 100%;
+    --bullet-background: white;
+    --bullet-background-active: white;
+
+    ion-slide {
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        img {  max-height: 300px;}
+        h1 { color: #fedb47; text-align: justify; align-self: stretch; margin-bottom: 0px; font-size:18px;}
+        p { color: white; text-align: justify; font-size:12px; align-self: stretch; margin-top: 0px; font-family: 'Montserrat';}
+    }
+}

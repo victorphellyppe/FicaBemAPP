@@ -1,0 +1,7 @@
+{
+  "name": "sos-ravvs",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

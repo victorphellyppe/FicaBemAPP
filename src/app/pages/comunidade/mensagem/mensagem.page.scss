@@ -1,0 +1,95 @@
+#container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: calc(100% - 100px);
+
+    .msg {
+        padding: 10px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        border: 2px solid var(--cor-fonte);
+        border-radius: 15px;
+        margin-bottom: 30px;
+
+        .autor { font-size: 12px; color: var(--cor-fonte);margin:0px }
+        .mensagem { font-size: 16px; color: #605f5f; margin: 2px; }
+        .data { font-size:14px; color: #c4cff6; text-align: right; margin: 2px; }
+    }
+
+    #mensagem-principal { width: 100%;}
+    #mensagens {
+        width: 80%;
+        overflow: scroll;
+    }
+
+    .autor {
+        border-bottom-left-radius: 0px;
+    
+        .triangle {
+            width: 0;
+            height: 0;
+            margin-bottom: -35px;
+            margin-left: -22px;
+            border-bottom: 25px solid transparent;
+            border-left: 25px solid var(--cor-fonte);
+        }
+        
+        .inner-triangle {
+            position: relative;
+            right: 23px;
+            width: 0;
+            height: 0;
+            border-bottom: 20px solid transparent;
+            border-left: 20px solid var(--cor-fundo);
+        }
+    }
+    
+    .outro-usuario {
+        border-bottom-right-radius: 0px;
+    
+        .triangle {
+            align-self: flex-end;
+            width: 0;
+            height: 0;
+            margin-bottom: -35px;
+            margin-right: -22px;
+            border-bottom: 25px solid transparent;
+            border-right: 25px solid var(--cor-fonte);
+        }
+        
+        .inner-triangle {
+            position: relative;
+            left: 3px;
+            width: 0;
+            height: 0;
+            border-bottom: 20px solid transparent;
+            border-right: 20px solid var(--cor-fundo);
+        }
+    }
+
+}
+
+#enviar {
+    height: 70px;
+    width: 100%;
+    bottom: 0px;
+    background-color: var(--cor-fundo);
+    display: flex;
+
+    #texto-enviar {
+        border: 1px solid var(--cor-fonte);
+        border-radius: 20px;
+        height: 50px;
+        width: 100%;
+        padding: 5px;
+
+        ion-input {--color: var(--cor-fonte)}
+    }
+
+}
+
+/** Animação  */

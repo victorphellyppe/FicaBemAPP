@@ -1,0 +1,45 @@
+<div id="modal">
+  <div id="seguro" *ngIf="status == 'seguro'">
+    <h1>Sem preocupação</h1>
+    <ion-img class="img" src="/assets/imgs/violentometro/seguro.jpg"></ion-img>
+    <p>Seu relacionamento não aparenta trazer traços de violência</p>
+  </div>
+
+  <div id="atencao" *ngIf="status == 'atencao'">
+    <h1>Atenção!</h1>
+    <ion-img class="img" src="/assets/imgs/violentometro/atencao.jpg"></ion-img>
+    <p>Seu relacionamento apresenta alguns traços de abuso.</p>
+    <p>A violência pode aumentar</p>
+  </div>
+
+  <div id="reaja" *ngIf="status == 'reaja'">
+    <h1>Reaja!</h1>
+    <ion-img class="img" src="/assets/imgs/violentometro/reaja.jpg"></ion-img>
+    <p>Teu relacionamento apresenta consideraveis traços de abuso.</p>
+    <p>Não te deixe destruir</p>
+  </div>
+
+  <div id="ajuda" *ngIf="status == 'ajuda'">
+    <h1>Necessário ajuda Profissional</h1>
+    <ion-img class="img" src="/assets/imgs/violentometro/ajuda.jpg"></ion-img>
+    <p>Teu relacionamento apresenta fortes sinais de abuso</p>
+    <p>Você precisa de ajuda profissional (delegacia da mulher, psicoterapia, proteção pessoal...)</p>
+  
+    <div id="contato-ajuda">
+        <ion-button (click)="ligar()" expand="block" fill="outline" size="large">
+            <ion-icon slot="start" name="call"></ion-icon>
+            Ligar
+          </ion-button>
+  
+          <ion-button  expand="block" fill="outline" (click)="enviarEmail()" size="large">
+            <ion-icon slot="start" name="mail"></ion-icon>
+            Email
+          </ion-button>
+    </div>
+  </div>
+
+  <ion-button shape="round" expand="full" (click)="fechar()">
+    Fechar
+  </ion-button>
+
+</div>

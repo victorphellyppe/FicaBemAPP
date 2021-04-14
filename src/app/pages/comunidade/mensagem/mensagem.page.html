@@ -1,0 +1,58 @@
+<ion-content  #ionContent>
+  <div id="theme3"  class="height-100">
+    <div id="toolbar">
+      <ion-grid fixed>
+        <ion-row>
+          <!-- ESQUERDA-->
+          <ion-col size="3">
+            <back-button></back-button>
+          </ion-col>
+
+          <!-- CENTRO -->
+          <ion-col size="6"><h1>MENSAGEM</h1></ion-col>
+
+          <!-- DIREITA -->
+          <ion-col size="3">
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div id="container">
+      <div id="mensagem-principal" class="msg">
+        <p class="autor">{{(duvida.anonimo ? 'Anônimo' : duvida.autor.nome)}}</p>
+        <p class="mensagem">
+          <b>{{duvida.titulo}}</b> <br/> {{duvida.descricao}}
+        </p>
+        <p class="data"> {{duvida.data | dataBrasil}}</p>
+      </div>
+      
+      <div id="mensagens">
+        
+        <div class="msg" [ngClass]="{
+              'autor': c.autor.id == usuario.id, 
+              'outro-usuario': c.autor.id != usuario.id
+          }" *ngFor="let c of duvida.comentarios">
+          
+          <p class="autor">{{c.autor.nome}}</p>
+          <p class="mensagem">{{c.comentario}}</p>
+          <p class="data">{{c.data|dataBrasil}}</p>
+          <div class="triangle">
+            <div class="inner-triangle"></div>
+        </div>
+        </div>
+      </div>
+      
+      <div id="enviar" *ngIf="usuario != null">
+        <ion-button (click)="enviar()" [disabled]="!mensagem" fill="clear">
+          <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+        </ion-button>
+        
+        <div id="texto-enviar">
+          <ion-input type="text" [(ngModel)]="mensagem" placeholder="Digite seu texto"></ion-input>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

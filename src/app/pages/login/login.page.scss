@@ -1,0 +1,41 @@
+ion-content {
+    --background: var(--ion-color-primary);
+    height: 100%;
+
+    #btn-voltar {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+    }
+
+    #tela1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        padding: 150px 25px 25px 25px;
+        h1 { color: var(--ion-color-secondary); margin: 0px; font-family: 'Montserrat';font-size:18px;}
+        p { color: white; margin: 0px; line-height: 15pt; font-family: 'Montserrat'; font-size:13px;}
+        #novo-cadastro { margin: 15px; font-size: 14px;}
+        #recuperar-senha { margin: 15px; font-size: 14px;}
+    }
+
+    #tela2 {
+        height: 100%;
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 100%;
+            padding: 50px 25px 25px 25px;
+            h1 { color: var(--ion-color-secondary); text-align: center; margin: 20px; font-family: Arial, Helvetica, sans-serif;}
+            
+            ion-item {
+                --background: rgba(0,0,0,0);
+                --border-color: #e9d066;
+
+                ion-input { text-align: center;}
+            }
+        }
+    }
+}

@@ -1,0 +1,39 @@
+<ion-content #ionContent>
+  <div id="theme2"  class="height-100">
+    <div id="toolbar">
+      <ion-grid fixed>
+        <ion-row>
+          <!-- ESQUERDA-->
+          <ion-col size="3"><back-button></back-button></ion-col>
+
+          <!-- CENTRO -->
+          <ion-col size="6">        
+              <h1>INFORMAÇÕES</h1>
+          </ion-col>
+
+            <!-- DIREITA -->
+            <ion-col size="3">
+              <btn-ajuda [personagem]='ajuda' [auto-carregar]="true"></btn-ajuda>
+            </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div id="container">
+      <!-- RAVVS -->
+      <div class="opcao" (click)="navegar('/encontre-ajuda/ravvs')">
+        <ion-icon name="female"></ion-icon>
+        <p>RAVVS</p>
+      </div>
+
+      <!-- RAVVS -->
+      <div class="opcao" (click)="navegar('/encontre-ajuda/apoio')">
+        <ion-icon name="ios-people-outline"></ion-icon>
+        <p>UNIDADES <br/>DE ATENDIMENTO</p>
+      </div>
+
+    </div>
+
+  </div>
+</ion-content>

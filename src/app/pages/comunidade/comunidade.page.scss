@@ -1,0 +1,21 @@
+#container {
+    height: calc(100% - 100px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .opcao {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px;
+
+        p {text-align: center;}
+        ion-icon {
+            font-size: 25px;
+            color: var(--cor-fonte);
+            margin-bottom:-15px;
+        }
+    }
+}

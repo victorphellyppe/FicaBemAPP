@@ -1,0 +1,32 @@
+
+#container {
+
+    padding: 20px;
+
+    h1 { margin: 0px 10px; color: var(--cor-fonte); font-size: 25px; line-height: 25px;}
+    #mapa {
+        margin: 10px 0px;
+        border-radius: 50px;
+    }
+    
+    
+    ion-card {
+        background: white;
+        border-radius: 15px;
+    
+        ion-card-header {
+            h1 {
+                text-align: center;
+                margin-top: 2px;
+                font-family: 'Montserrat';
+            }
+            p {
+                font-family: 'Montserrat';
+                color: black;
+                font-size: 12px;
+                margin: 10px 2px;
+            }
+        }
+        ion-card-content { margin: -50px 0px -40px; padding: 0px; }
+    }
+}

@@ -1,0 +1,48 @@
+<ion-content>
+  <div id="theme3" class="height-100">
+    <div id="toolbar">
+      <ion-grid fixed>
+        <ion-row>
+          <!-- ESQUERDA-->
+          <ion-col size="3">
+            <back-button fixo="/em-perigo" [close]="false"></back-button>
+          </ion-col>
+  
+          <!-- CENTRO -->
+          <ion-col size="6">        
+            <h1>CONTATOS</h1>
+          </ion-col>
+  
+          <!-- DIREITA -->
+          <ion-col size="3">
+          </ion-col>
+  
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div id="container">
+
+      <ion-button expand="block" routerLink="/em-perigo/novo-contato" shape="round">
+        CADASTRAR NOVO CONTATO
+      </ion-button>
+
+      <h1 *ngIf="contatos.length > 0">Habilite os contatos que você deseja alertar</h1>
+     
+      <div id="contatos">
+
+        <div class="contato" *ngFor="let contato of contatos">
+          <p>{{contato.nome}}</p>
+
+          <div class="opc">
+            <ion-icon name="ios-trash-outline" (click)="remover(contato)"></ion-icon>
+            <ion-toggle [checked]="contato.ativo" (ionChange)="alterar(contato)"></ion-toggle>
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,36 @@
+ion-content { height: 100%;}
+
+#container {
+    padding: 20px;
+    height: calc(100% - 100px);
+}
+
+form { height: 100%;}
+
+#novo-cadastro {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.campo {
+    border-bottom: 2px solid var(--cor-fonte);
+    p { margin-bottom: -5px;}
+    ion-input { --color: var(--cor-fonte);}
+    ion-textarea { --color: var(--cor-fonte);}
+}
+
+.campo-erro {
+    p { color: red !important;}
+}
+
+.campo-anonimo {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+    p {font-size: 12px;}
+}
+ion-textarea {
+    max-height: 250px;
+}

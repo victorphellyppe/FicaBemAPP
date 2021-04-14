@@ -1,0 +1,41 @@
+<ion-content>
+  <div id="theme4"  class="height-100">
+    <div id="toolbar">
+      <ion-grid fixed>
+        <ion-row>
+          <!-- ESQUERDA-->
+          <ion-col size="3">
+            <back-button></back-button>
+          </ion-col>
+  
+          <!-- CENTRO -->
+          <ion-col size="6">        
+              <h1>QUEM SOMOS</h1>
+          </ion-col>
+  
+          <!-- DIREITA -->
+          <ion-col size="3">
+          </ion-col>
+  
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <ion-slides mode="ios" pager="ios" scrollbar="ios">
+      <ion-slide> 
+        <div class="slide">
+          <img class="personagem" src="assets/imgs/personagens/quem-somos.png"/>
+          <p>Olá! Se quiser conhecer a história da RAVVS, eu te contarei! Arraste a tela para o lado para poder ver algumas informações sobre a RAVVS</p>
+        </div>
+      </ion-slide>
+
+      <ion-slide *ngFor="let slide of slides"> 
+        <div class="slide">
+          <p>{{slide.descricao}}</p>
+        </div>
+      </ion-slide>
+
+    </ion-slides>
+    
+  </div>
+</ion-content>

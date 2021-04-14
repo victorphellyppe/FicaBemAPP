@@ -1,0 +1,33 @@
+ion-content {
+
+    --background: #ffa21a;
+    --padding-bottom: 40px;
+    --padding-top: 40px;
+    --padding-end: 40px;
+    --padding-start: 40px;
+  
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        p {
+            color:white;
+            font-family: 'Montserrat';
+            text-align: justify;
+            font-size: 20px;
+            white-space: pre-line;
+        }
+            
+        img {
+            max-height: 300px;
+        }
+
+        ion-button {
+            width: 100%;
+            height: 50px;;
+        }
+    }
+
+}

@@ -1,0 +1,130 @@
+<ion-content #ionContent>
+  <div id="theme2">
+    <div id="toolbar">
+      <ion-grid fixed>
+        <ion-row>
+          <!-- ESQUERDA-->
+          <ion-col size="3"></ion-col>
+
+          <!-- CENTRO -->
+          <ion-col size="6">        
+              <h1>Informações</h1>
+          </ion-col>
+
+            <!-- DIREITA -->
+            <ion-col size="3">
+              <btn-ajuda [personagem]='ajuda' ></btn-ajuda>
+            </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="atualizar()">
+
+      <div id="personagem" *ngIf="msg">
+        <p>{{msg}}</p>
+      </div>
+
+      <ion-item-group>
+        <ion-item-divider>
+          <ion-label>Atualizar Perfil</ion-label>
+        </ion-item-divider>
+              
+        <!-- NOME -->
+        <ion-item>
+          <ion-label position="floating">Nome <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required formControlName="nome" type="text"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="form.get('nome').invalid && form.get('nome').touched" lines="none">
+          <ion-text color="danger" class="form-error">
+            Campo nome é obrigatório
+          </ion-text>
+        </ion-item>
+        
+        <!-- EMAIL -->
+        <ion-item>
+          <ion-label position="floating">E-mail <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required formControlName="email" inputmode="email" type="text"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="form.get('email').invalid && form.get('email').touched" lines="none">
+          <ion-text color="danger" class="form-error">
+            Informe um email válido
+          </ion-text>
+        </ion-item>
+        
+        <!-- TELEFONE -->
+        <ion-item>
+          <ion-label position="floating">Telefone <ion-text color="danger">*</ion-text></ion-label>
+          <ion-input required formControlName="telefone" inputmode="tel" mask="(00) 00000-0000" type="text"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="form.get('telefone').invalid && form.get('telefone').touched" lines="none">
+          <ion-text color="danger" class="form-error">
+            Informe um telefone para contato
+          </ion-text>
+        </ion-item>
+
+        <!-- DATA NASCIMENTO -->
+        <ion-item>
+          <ion-label position="floating">Data de Nascimento <ion-text color="danger">*</ion-text></ion-label>
+          <ion-datetime displayFormat="DD de MMMM de YYYY"  formControlName="data_nascimento" monthNames="Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro" cancelText="Cancelar" doneText="Ok" placeholder="Selecione a data"></ion-datetime>
+        </ion-item>
+        <ion-item *ngIf="form.get('data_nascimento').invalid && form.get('data_nascimento').touched" lines="none">
+          <ion-text color="danger" class="form-error">
+            Informe uma data de nascimento
+          </ion-text>
+        </ion-item>
+
+
+        <ion-button block expand="full" shape="round" type="submit" [disabled]="form.invalid">
+          Atualiza
+        </ion-button>
+      </ion-item-group>
+    </form>
+
+    <ion-item-group>
+      <form [formGroup]="formSenha" (ngSubmit)="atualizarSenha()">
+        <ion-item-divider>
+          <ion-label>Atualizar senha</ion-label>
+        </ion-item-divider>
+
+          <!-- SENHA -->
+          <ion-item>
+            <ion-label position="floating">Nova senha <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input required formControlName="senha" type="password"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="formSenha.get('senha').invalid && formSenha.get('senha').touched" lines="none">
+            <ion-text color="danger" class="form-error">
+              A senha é obrigatória e deve ter 6 digitos
+            </ion-text>
+          </ion-item>
+
+          <!-- SENHA CONFIRMAÇÃO -->
+          <ion-item>
+            <ion-label position="floating">Confirme senha <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input required formControlName="senha2" type="password"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="formSenha.get('senha2').invalid && formSenha.get('senha2').touched" lines="none">
+            <ion-text color="danger" class="form-error">
+             A confirmação de senha é obrigatória para atualizar a senha
+            </ion-text>
+          </ion-item>
+          <ion-item *ngIf="formSenha.hasError('senhasDiferentes') && formSenha.get('senha2').dirty" lines="none">
+            <ion-text color="danger" class="form-error">
+             A senha de confirmação não é igual a nova senha
+            </ion-text>
+          </ion-item>
+  
+          <ion-button block expand="full" shape="round" type="submit" [disabled]="formSenha.invalid">
+            Atualiza senha
+          </ion-button>
+        </form>
+      </ion-item-group>
+
+      <ion-button block expand="full" shape="round" color="secondary" id="btn-desconectar" (click)="desconectar()">
+        Desconectar
+      </ion-button>
+
+
+</div>
+</ion-content>

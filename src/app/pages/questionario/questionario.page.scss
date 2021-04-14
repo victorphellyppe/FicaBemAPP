@@ -1,0 +1,55 @@
+form {
+    padding: 20px;
+    margin-bottom: 20px;
+
+    h1 { font-family: 'Montserrat'; color:var(--cor-fonte)}
+    ion-button {
+        margin: 40px 0px;
+    }
+
+    ion-label {color: black; font-size: 12px; font-family: 'Montserrat';}
+
+    .campo-erro { 
+        height: 35px; 
+        margin: -20px 20px 0px;
+        ion-label {color: #ed6c7d; font-size: 12px; font-family: 'Montserrat';}
+    }
+
+    ion-item-divider {
+        ion-label {
+            color: var(--cor-fonte) !important;
+            text-align: center;
+            width: 100%;
+            font-size: 20px !important;
+            margin: 25px 0px 5px 0px;
+        }
+    }
+
+    ion-select {
+        .select-icon { color: red !important;}
+        background-color: #5a77ed;
+        border-radius: 25px;
+        width: 100%;
+        height: 25px;
+        padding: 2px;
+        color: white;
+        text-align: right;
+        font-family: 'Montserrat';
+    }
+}
+
+#concluido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p { 
+        padding: 10px; 
+        color: rgb(8, 37, 36);
+        font-weight: bolder;
+
+        text-align: center; 
+        font-family: 'Montserrat'; 
+        font-size: 18px;
+    }
+}

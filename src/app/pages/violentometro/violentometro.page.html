@@ -1,0 +1,138 @@
+<ion-content>
+  <div id="theme2">
+    <div id="toolbar">
+      <ion-grid fixed>
+        <ion-row>
+          <!-- ESQUERDA-->
+          <ion-col size="3">
+            <back-button></back-button>
+          </ion-col>
+
+          <!-- CENTRO -->
+          <ion-col size="6">        
+            <h1>VIOLENTÔMETRO</h1>
+          </ion-col>
+
+          <!-- DIREITA -->
+          <ion-col size="3">
+              <btn-ajuda [personagem]='ajuda'[auto-carregar]="true"></btn-ajuda>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </div>
+    
+      <div id="questionario">
+          <p>Descubra seu grau de violência</p>
+          <ion-list>
+            <ion-item>
+              <ion-label text-wrap>Realiza algum tipo de chantagem?</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="resposta.atencao[1]"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>Mente ou engana?</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="resposta.atencao[2]"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>Ignora?</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="resposta.atencao[3]"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>Possuí ciúmes constantes?</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="resposta.atencao[4]"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>Destroi objetos pessoais?</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="resposta.reaja[0]"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>Faz sentir-se culpada?</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="resposta.atencao[5]"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>Sofre piada de mau gosto?</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="resposta.atencao[0]"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>Ofende ou ridiculariza?</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="resposta.atencao[7]"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>Humilha em público?</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="resposta.atencao[8]"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>Intimida ou ameaça a fazer algo?</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="resposta.atencao[9]"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>Belisca ou Arranha?</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="resposta.reaja[4]"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>Controla ou proíbe?</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="resposta.atencao[10]"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>Desqualifica ou a faz inferior?</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="resposta.atencao[6]"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>Machuca?</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="resposta.reaja[1]"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>Empurra ou puxa forte?</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="resposta.reaja[5]"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>Carícias agressivas (tapas)?</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="resposta.reaja[2]"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>Brinca de bater?</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="resposta.reaja[3]"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>Soca?</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="resposta.reaja[6]"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>Chuta?</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="resposta.reaja[7]"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>Prende e deixa confinada?</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="resposta.ajuda[0]"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>Ameaça com objetos ou armas?</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="resposta.ajuda[1]"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>Ameaça de morte?</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="resposta.ajuda[2]"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>Força a ter relação sexual?</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="resposta.ajuda[3]"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>Abusa sexualmente (Não respeita sua vontade)?</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="resposta.ajuda[4]"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>Viola ou já estuprou?</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="resposta.ajuda[5]"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label text-wrap>Mutila?</ion-label>
+              <ion-checkbox slot="end" [(ngModel)]="resposta.ajuda[6]"></ion-checkbox>
+            </ion-item>
+          </ion-list>
+          <ion-button (click)="calcular()" expand="full" color="primary" shape="round">
+            Calcular
+          </ion-button>
+      </div>
+  </div>
+</ion-content>

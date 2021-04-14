@@ -1,0 +1,78 @@
+<ion-content>
+  <div id="theme1">
+     
+    <div id="toolbar">
+      <ion-grid fixed>
+        <ion-row>
+          <!-- ESQUERDA -->
+          <ion-col size="3">
+          </ion-col>
+          
+          <!-- CENTRAL -->
+          <ion-col size="6" id="info-central">    
+            <img src="/assets/imgs/logo.png" id="logo"/>
+            <h1>Fica Bem</h1>
+          </ion-col>
+
+
+          <!-- DIREITA -->
+          <ion-col size="3">
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </div>
+
+      <div id="opcoes">
+        <!-- QUEM SOMOS -->
+        <ion-button color="light" fill="clear"  routerLink='/quem-somos'>
+          <div class="btn">
+            <ion-icon name="ios-home-outline"></ion-icon>
+
+            <p>Quem somos</p>
+          </div>
+        </ion-button>
+
+        <!-- DENUNCIA -->
+        <ion-button color="light" fill="clear" routerLink='/questionario'>
+          <div class="btn">
+            <ion-icon slot="start" name="ios-sad-outline"></ion-icon>
+            <p>Denunciar Violência</p>
+          </div>
+        </ion-button>
+
+        <!-- ENCONTRE AJUDA -->
+        <ion-button color="light" fill="clear" routerLink='/encontre-ajuda'>
+            <div class="btn">
+              <ion-icon slot="start" name="help-circle-outline"></ion-icon>
+              <p>Encontre ajuda</p>
+            </div>
+          </ion-button>
+
+        <!-- COMUNIDADE -->
+        <ion-button color="light" fill="clear" routerLink='/comunidade'>
+          <div class="btn">
+            <ion-icon slot="start" name="ios-people-outline"></ion-icon>
+            <p>Comunidade</p>
+          </div>
+        </ion-button>
+
+        <!-- EM PERIGO -->
+        <ion-button *ngIf="!web" color="light" fill="clear" routerLink='/em-perigo' >
+          <div class="btn">
+            <ion-icon slot="start" name="ios-alert-outline"></ion-icon>
+            <p>Em Perigo</p>
+          </div>
+        </ion-button>
+
+        <!-- VIOLENTOMETRO -->
+        <ion-button color="light" fill="clear" routerLink='/violentometro' >
+          <div class="btn">
+            <ion-icon slot="start" name="ios-stopwatch-outline"></ion-icon>
+            <p>Violentômetro</p>
+          </div>
+        </ion-button>
+
+      </div>
+  </div>
+</ion-content>

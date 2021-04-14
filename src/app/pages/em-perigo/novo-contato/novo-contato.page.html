@@ -1,0 +1,62 @@
+<ion-content>
+  <div id="theme3" class="height-100">
+    <div id="toolbar">
+      <ion-grid fixed>
+        <ion-row>
+          <!-- ESQUERDA-->
+          <ion-col size="3">
+            <back-button fixo="/em-perigo" [close]="false"></back-button>
+          </ion-col>
+  
+          <!-- CENTRO -->
+          <ion-col size="6">        
+            <h1>CONTATOS</h1>
+          </ion-col>
+  
+          <!-- DIREITA -->
+          <ion-col size="3">
+          </ion-col>
+  
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="salvar()">
+        
+      <div id="container">
+
+        <div id="info">
+          <h1>Cadastrar contato</h1>
+          <p>Administrar meus contato</p>
+        </div>
+
+        <!-- NOME -->
+        <div>
+          <div class="campo">
+            <p>Nome</p>
+            <ion-input formControlName="nome" maxlength="50" placeholder="Digite o nome do contato"></ion-input>
+          </div>
+          <div class="campo-erro" *ngIf="form.get('nome').invalid && form.get('nome').touched">
+            <p> Informe o nome do seu contato </p>
+          </div>
+        </div>
+
+        <!-- TELEFONE -->
+        <div>
+          <div class="campo">
+            <p>Telefone</p>
+            <ion-input formControlName="telefone" inputmode="tel" mask="(00) 00000-0000" maxlength="50" placeholder="(00) 0000-0000"></ion-input>
+          </div>
+          <div class="campo-erro" *ngIf="form.get('telefone').invalid && form.get('telefone').touched">
+            <p> Informe o telefone do seu contato </p>
+          </div>
+        </div>
+
+        <ion-button type="submit" expand="" shape="round" [disabled]="!form.valid">
+          Cadastrar novo contato
+        </ion-button>
+
+      </div>
+    </form>
+  </div>
+</ion-content>

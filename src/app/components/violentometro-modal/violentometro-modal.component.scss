@@ -1,0 +1,26 @@
+#modal {
+    background-color: #e8e8e8;
+    height: 100%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+        
+    #seguro { color: #556B2F; }
+    
+    #atencao { color: #FFD700; }
+
+    #reaja { color: #FF8C00; }
+
+    #ajuda { color: #B22222; }
+
+    #contato-ajuda {
+        display: flex;
+        justify-content: space-around;
+    }
+}
+
+.img { border-radius: 20px !important; overflow: hidden;}
+
