@@ -3,6 +3,6 @@
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">localhost</domain>
         <domain includeSubdomains="true">ravvs.carloswgama.com.br</domain>
-        <domain includeSubdomains="true">http://happs.saude.al.gov.br</domain>
+        <domain includeSubdomains="true">http://ravvs.carloswgama.com.br/api</domain>
     </domain-config>
 </network-security-config>

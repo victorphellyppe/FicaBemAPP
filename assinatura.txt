@@ -4,3 +4,8 @@ keytool -genkey -v -keystore ravvs.keystore -alias cesmac -keyalg RSA -keysize 2
 jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ravvs.keystore platforms\android\app\build\outputs\apk\release\app-release-unsigned.apk cesmac
 
 D:\AndroidSDK\build-tools\29.0.2\zipalign -v 4 platforms\android\app\build\outputs\apk\release\app-release-unsigned.apk platforms\android\app\build\outputs\apk\release\ravvs.2.0.0.apk
+
+------------------------------------------
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.jks E:\@Victor\ravvs-app-master\platforms\android\app\build\outputs\apk\release\app-release-unsigned.apk my-alias
+C:\Users\Victor\AppData\Local\Android\Sdk\build-tools\31.0.0-rc2\zipalign -v 4 E:\@Victor\ravvs-app-master\platforms\android\app\build\outputs\apk\release\app-release-unsigned.apk E:\@Victor\ravvs-app-master\platforms\android\app\build\outputs\apk\release\FicaBemv2.apk

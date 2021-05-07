@@ -1,4 +1,4 @@
-<ion-content>
+<ion-content padding>
   <div id="theme3" class="height-100">
     <div id="toolbar">
       <ion-grid fixed>
@@ -23,12 +23,10 @@
     </div>
 
     <div id="container">
-
       <div id="barra-busca">
-        <ion-icon slot="start" name="ios-search-outline"></ion-icon>
-        <ion-input placeholder="Digite algo para buscar" debounce="1000" (ionChange)="buscar()" [(ngModel)]="termo"></ion-input>
+            <ion-icon slot="start" name="ios-search-outline"></ion-icon>
+            <ion-input placeholder="Digite algo para buscar" debounce="1000" (ionChange)="buscar()" [(ngModel)]="termo"></ion-input>
       </div>
-
       <div id="duvidas" *ngIf="duvidas.length > 0">
         <div class="duvida" *ngFor="let duvida of duvidas" (click)="abrir(duvida)">
             <!-- AUTOR -->
@@ -45,17 +43,18 @@
       </div>
       <div>
        
-      <div id="erro" *ngIf="duvidas.length == 0">
-        
-        <p *ngIf="!termo"> Hummm... parece que não há nenhuma dúvida ainda. Pode criar uma dúvida clicando na opção + abaixo.</p>
-        <p *ngIf="termo">Não achei nada sobre o termo <br/>"<b>{{termo}}</b>"</p>
+        <div id="erro" *ngIf="duvidas.length == 0">
+          
+          <p *ngIf="!termo"> Hummm... parece que não há nenhuma dúvida ainda. Pode criar uma dúvida clicando na opção + abaixo.</p>
+          <p *ngIf="termo">Não achei nada sobre o termo <br/>"<b>{{termo}}</b>"</p>
+        </div>
+  
+  
+        <ion-button (click)="nova()" expand="block" color="primary" shape="round">
+          Nova Mensagem
+        </ion-button>
       </div>
-
-
-      <ion-button (click)="nova()" expand="block" color="primary" shape="round">
-        Nova Mensagem
-      </ion-button>
     </div>
-
   </div>
+</ion-content>
 </ion-content>

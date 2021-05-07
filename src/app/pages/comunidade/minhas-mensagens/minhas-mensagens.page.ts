@@ -16,6 +16,7 @@ export class MinhasMensagensPage implements OnInit {
   ajuda = new Personagem('Aqui ficam as mensagens que você cria.\n\n\
                         Caso queira criar uma mensagem que pode ser lida e respondida por outros usuários cliquem no +', Avatar.COMUNIDADE);
 
+  termo:string = '';
   //Lista com as duvidas
   duvidas: Duvida[] = []
 

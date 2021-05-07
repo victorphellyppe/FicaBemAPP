@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="br.com.carloswgama.sosravvs" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="br.com.sesau.ravvs.ficabem" version="2.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>FicaBem</name>
     <description>Aplicativo contra a violência a mulher</description>
-    <author email="carloswgama@gmail.com" href="http://carloswgama.com.br/">Carlos W. Gama</author>
+    <author email="vitinifal@gmail.com" href="https://www.linkedin.com/in/victor-oliveira-61349274/">Victor Oliveira</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
