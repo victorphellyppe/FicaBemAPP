@@ -68,8 +68,9 @@ export class EmPerigoPage implements OnInit {
       buttons: ['Cancelar', {text: 'Enviar', handler:() => {
           const telefones = [];
           this.contatos.forEach(c => {
-            if (c.ativo) telefones.push(c.telefone)
-          }) 
+          if (c.ativo)
+            telefones.push(c.telefone);
+        })
           if (telefones.length > 0)
             this.contatosSrv.enviarSMS(telefones).then(sucesso => this.msgSMS(true))
           else
@@ -88,16 +89,16 @@ export class EmPerigoPage implements OnInit {
       buttons: [
         'Cancelar',
         {text: 'Enviar', handler:() => {
-          const telefones = []
+          const telefones = [];
           //RAVVS
           telefones.push(this.TELEFONE_RAVVS);
           //CONTATOS
           this.contatos.forEach(c => {
-            if (c.ativo) telefones.push(c.telefone)
-          }) 
-          
+            if (c.ativo) telefones.push(c.telefone);
+          });       
           this.contatosSrv.enviarSMS(telefones).then(sucesso => this.msgSMS(true));
-        }}
+        }
+      }
       ]
     }).then(a => a.present())
   }

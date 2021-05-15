@@ -14,16 +14,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ContatosService  extends ApiService {
 
-
   constructor(storage:Storage, http: HttpClient, private usuarioSrv:UsuarioService, 
     private callNumber: CallNumber, private sms:SMS, private geolocation: Geolocation) {
     super(storage, http)
   }
 
   /** Retorna os contatos */
-  public async buscar(): Promise<Contato[]> {
+  async buscar(): Promise<Contato[]> {
     return this.get('/contatos', true).then(resposta => {
-      let contatos = [];
+      const contatos = [];
       resposta.contatos.forEach(c => contatos.push(Object.assign(new Contato, c)))
       return contatos;
     })
@@ -83,22 +82,16 @@ export class ContatosService  extends ApiService {
    * @todo adicionar <uses-permission android:name="android.permission.SEND_SMS"/> em android/app/src/main/AndroidManifest.xml
    * @return Promise<Boolean> true -> Enviou | False -> Falhou 
    */
-  public async enviarSMS(telefone: string | string[]) {
+  public async enviarSMS(telefone: string | string[] ) {
     try {
-      //Busca localização
-      const localizacao = await this.geolocation.getCurrentPosition();
-      const {longitude, latitude} = localizacao.coords;
-      //Monta mensagem
-      const mapa = `http://maps.google.com/maps?q=${latitude},${longitude}`
-      let msg = 'Estou em perigo! Estou enviado essa mensagem através do aplicativo da RAVVS. Segue a minha localização: ' + mapa;
-      //Envia
+      let msg = 'Estou em perigo! Estou enviado essa mensagem através do aplicativo da RAVVS. Segue a minha localização: ';
       if (typeof(telefone) == "string") 
-        await this.sms.send(telefone, msg);
-      else {
-        for (let i = 0; telefone.length; i++)  
-          await this.sms.send(telefone[i], msg);
-      }
-      return true; //Enviado com sucesso
+        return await this.sms.send(telefone, msg);     
+    else {
+      for (let i = 0; i < telefone.length; i++)  
+        await this.sms.send(telefone[i], msg);
+    }
+      return true;
     } catch(e) {
       return false; //Falha no envio 
     }
