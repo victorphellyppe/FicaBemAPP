@@ -84,14 +84,20 @@ export class ContatosService  extends ApiService {
    */
   public async enviarSMS(telefone: string | string[] ) {
     try {
-      let msg = 'Estou em perigo! Estou enviado essa mensagem através do aplicativo da RAVVS. Segue a minha localização: ';
+      //Busca localização
+      const localizacao = await this.geolocation.getCurrentPosition();
+      const {longitude, latitude} = localizacao.coords;
+      //Monta mensagem
+      const mapa = `http://maps.google.com/maps?q=${latitude},${longitude}`;
+      let msg = 'Estou em perigo! Estou enviado essa mensagem através do aplicativo da RAVVS. Segue a minha localização: ' + mapa;
+      //Envia
       if (typeof(telefone) == "string") 
-        return await this.sms.send(telefone, msg);     
-    else {
-      for (let i = 0; i < telefone.length; i++)  
-        await this.sms.send(telefone[i], msg);
-    }
-      return true;
+        await this.sms.send(telefone, msg);
+      else {
+        for (let i = 0; i < telefone.length; i++)  
+          await this.sms.send(telefone[i], msg);
+      }
+      return true; //Enviado com sucesso
     } catch(e) {
       return false; //Falha no envio 
     }

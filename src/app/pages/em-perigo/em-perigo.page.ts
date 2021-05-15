@@ -81,7 +81,7 @@ export class EmPerigoPage implements OnInit {
 
   /**
    * Envia um SMS para a RAVVS e todos os contatos com sua localização - BOTÃO - ENVIAR SMS PARA TODOS
-   */
+   */ 
   public enviarSMSTodos() {
     this.alertController.create({
       header:'Solicitar ajuda',
